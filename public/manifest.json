@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "rpsls",
+  "name": "A Game of Rock Paper Scissors Lizard Spock",
   "icons": [
     {
       "src": "favicon.ico",
