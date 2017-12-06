@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { init } from "./actions";
+import { trimCharsStart, pick } from "lodash/fp";
 
-class App extends Component {
+export class App extends Component {
     componentDidMount() {
-        this.props.dispatch(init());
+        const initialId = trimCharsStart("#", window.location.hash);
+        this.props.dispatch(init(initialId));
     }
 
     render() {
@@ -38,10 +40,4 @@ class App extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        id: state ? state.id : "",
-    };
-};
-
-export default connect(mapStateToProps)(App);
+export default connect(pick("id"))(App);

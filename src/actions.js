@@ -1,27 +1,28 @@
 import firebase from "./firebase";
 import { ACTIVE } from "./game";
 import shortid from "shortid";
-export const INIT = "INIT";
 
-export function init() {
-    return dispatch => {
-        const id = window.location.hash || shortid.generate();
+export const INIT_PLAYER_1 = "INIT_PLAYER_1";
+export const INIT_PLAYER_2 = "INIT_PLAYER_2";
+export const PLAYER_1 = "PLAYER_1";
+export const PLAYER_2 = "PLAYER_2";
 
-        dispatch({ type: "INIT", state: { id: id, p: "p1", p1: ACTIVE, p2: null } });
+export function init(initialId) {
+    return (dispatch, getState) => {
+        const db = firebase.database();
 
-        if (id) {
-            firebase
-                .database()
-                .ref(`games/${id}`)
-                .once("value", snapshot => {
-                    const game = snapshot.val();
-                    dispatch({
-                        type: "INIT",
-                        state: Object.assign({ id: id, p: game ? "p2" : "p1" }, game),
-                    });
-                });
+        if (initialId) {
+            dispatch({ type: INIT_PLAYER_2, id: initialId });
+            db.ref(`games/${initialId}/p1`).on("value", snapshot => {
+                dispatch({ type: PLAYER_1, move: snapshot.val() });
+            });
+            db.ref(`games/${initialId}/p2`).set(ACTIVE);
         } else {
-            dispatch({ type: "INIT", state: { id: id, p: "p1", p1: ACTIVE, p2: null } });
+            dispatch({ type: INIT_PLAYER_1, id: shortid.generate() });
+            db.ref(`games/${initialId}/p2`).on("value", snapshot => {
+                dispatch({ type: PLAYER_2, move: snapshot.val() });
+            });
+            db.ref(`games/${initialId}/p1`).set(ACTIVE);
         }
     };
 }
