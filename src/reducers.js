@@ -1,5 +1,5 @@
 import { ACTIVE } from "./game";
-import { INIT_PLAYER_1, INIT_PLAYER_2, PLAYER_1, PLAYER_2 } from "./actions";
+import { INIT_PLAYER_1, INIT_PLAYER_2, PLAYER_1, PLAYER_2, MOVE } from "./actions";
 import { assign, set } from "lodash/fp";
 
 export default function reducers(state, action) {
@@ -12,6 +12,8 @@ export default function reducers(state, action) {
             return set("p1", action.move, state);
         case PLAYER_2:
             return set("p2", action.move, state);
+        case MOVE:
+            return set(state.p, action.move, state);
 
         default:
             return state;

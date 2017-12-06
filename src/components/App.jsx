@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { init } from "./actions";
+import { init } from "../actions";
 import { trimCharsStart, pick } from "lodash/fp";
+import copyToClipboard from "copy-to-clipboard";
+import Moves from "./Moves";
+import Versus from "./Versus";
 
 export class App extends Component {
     componentDidMount() {
@@ -10,6 +13,8 @@ export class App extends Component {
     }
 
     render() {
+        const opponentUrl = process.env.REACT_APP_WEB + "#" + this.props.id;
+
         return (
             <div>
                 <section className="hero">
@@ -27,14 +32,20 @@ export class App extends Component {
                              className="input"
                              type="text"
                              readOnly={true}
-                             value={this.props.id}
+                             value={opponentUrl}
                             />
                         </div>
                         <div className="control">
-                            <a className="button is-info">Copy</a>
+                            <button
+                             className="button is-info"
+                             onClick={() => copyToClipboard(opponentUrl)}>
+                                Copy
+                            </button>
                         </div>
                     </div>
                 </section>
+                <Versus />
+                <Moves />
             </div>
         );
     }

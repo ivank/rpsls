@@ -28,12 +28,16 @@ const STRENGTHS = [
     [ROCK, SCISSORS],
 ];
 
+export function isMove(move) {
+    return has(move, NAMES);
+}
+
 export function compare(a, b) {
-    if (!has(a, NAMES)) {
+    if (!isMove(a)) {
         throw new Error(`Invalid move "${a}" for player 1`);
     }
 
-    if (!has(b, NAMES)) {
+    if (!isMove(b)) {
         throw new Error(`Invalid move "${b}" for player 2`);
     }
 

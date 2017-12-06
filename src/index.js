@@ -4,7 +4,7 @@ import { render } from "react-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunkMiddleware from "redux-thunk";
-import App from "./App.jsx";
+import App from "./components/App.jsx";
 import reducers from "./reducers";
 import registerServiceWorker from "./registerServiceWorker";
 
