@@ -18,11 +18,12 @@ export function init(initialId) {
             });
             db.ref(`games/${initialId}/p2`).set(ACTIVE);
         } else {
-            dispatch({ type: INIT_PLAYER_1, id: shortid.generate() });
-            db.ref(`games/${initialId}/p2`).on("value", snapshot => {
+            const id = shortid.generate();
+            dispatch({ type: INIT_PLAYER_1, id: id });
+            db.ref(`games/${id}/p2`).on("value", snapshot => {
                 dispatch({ type: PLAYER_2, move: snapshot.val() });
             });
-            db.ref(`games/${initialId}/p1`).set(ACTIVE);
+            db.ref(`games/${id}/p1`).set(ACTIVE);
         }
     };
 }
