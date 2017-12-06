@@ -1,6 +1,41 @@
-export const ACTIVE = 0;
-export const ROCK = 1;
-export const PAPER = 2;
-export const SCISSORS = 3;
-export const LIZARD = 4;
-export const SPOCK = 5;
+import { isEqual, has, find } from "lodash/fp";
+
+export const ACTIVE = "0";
+export const ROCK = "r";
+export const PAPER = "p";
+export const SCISSORS = "x";
+export const LIZARD = "l";
+export const SPOCK = "s";
+
+export const NAMES = {
+    [ROCK]: "rock",
+    [PAPER]: "paper",
+    [SCISSORS]: "scissors",
+    [LIZARD]: "lizard",
+    [SPOCK]: "spock",
+};
+
+const STRENGTHS = [
+    [SCISSORS, PAPER],
+    [PAPER, ROCK],
+    [ROCK, LIZARD],
+    [LIZARD, SPOCK],
+    [SPOCK, SCISSORS],
+    [SCISSORS, LIZARD],
+    [LIZARD, PAPER],
+    [PAPER, SPOCK],
+    [SPOCK, ROCK],
+    [ROCK, SCISSORS],
+];
+
+export function compare(a, b) {
+    if (!has(a, NAMES)) {
+        throw new Error(`Invalid move "${a}" for player 1`);
+    }
+
+    if (!has(b, NAMES)) {
+        throw new Error(`Invalid move "${b}" for player 2`);
+    }
+
+    return Boolean(find(isEqual([a, b]), STRENGTHS));
+}
