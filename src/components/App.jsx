@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { init } from "../actions";
 import { trimCharsStart, pick } from "lodash/fp";
-import copyToClipboard from "copy-to-clipboard";
-import Moves from "./Moves";
-import Versus from "./Versus";
+import Game from "./Game";
+import classnames from "classnames";
+import Url from "./Url";
 
 export class App extends Component {
     componentDidMount() {
@@ -13,42 +13,62 @@ export class App extends Component {
     }
 
     render() {
-        const opponentUrl = process.env.REACT_APP_WEB + "#" + this.props.id;
+        const { isWon, isDraw, isFinished, opponent } = this.props;
 
         return (
             <div>
-                <section className="hero">
+                <section
+                 className={classnames("hero", {
+                    "is-primary": !isFinished,
+                    "is-success": isWon,
+                    "is-warning": isDraw,
+                    "is-danger": isFinished && !isWon,
+                 })}>
                     <div className="hero-body">
                         <div className="container">
-                            <h1 className="title">Rock Paper Scissors Lizard Spock</h1>
-                            <h2 className="subtitle">A Game</h2>
+                            <div className="columns is-centered">
+                                <div className="column is-three-quarters-tablet is-half-desktop">
+                                    <h1 className="title">Rock Paper Scissors Lizard Spock</h1>
+                                    <h2 className="subtitle">A Game</h2>
+
+                                    {opponent ? (
+                                        <Game />
+                                    ) : (
+                                        <div className="content">
+                                            <p>
+                                                Send this URL to your friend, then wait here for
+                                                them to show up.
+                                            </p>
+                                            <Url />
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
-                <section className="center">
-                    <div className="field has-addons">
-                        <div className="control">
-                            <input
-                             className="input"
-                             type="text"
-                             readOnly={true}
-                             value={opponentUrl}
-                            />
-                        </div>
-                        <div className="control">
-                            <button
-                             className="button is-info"
-                             onClick={() => copyToClipboard(opponentUrl)}>
-                                Copy
-                            </button>
+                <section className="section">
+                    <div className="container">
+                        <div className="columns is-centered">
+                            <div className="column is-three-quarters-tablet is-half-desktop">
+                                <div className="content">
+                                    <h3>The rules</h3>
+                                    <p>
+                                        Scissors cuts paper. Paper covers rock. Rock crushes lizard.
+                                        Lizard poisons Spock. Spock smashes scissors. Scissors
+                                        decapitates lizard. Lizard eats paper. Paper disproves
+                                        Spock. Spock vaporizes rock. Rock crushes scissors.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
-                <Versus />
-                <Moves />
             </div>
         );
     }
 }
 
-export default connect(pick("id"))(App);
+const mapStateToProps = pick(["opponent", "isWon", "isDraw", "isFinished"]);
+
+export default connect(mapStateToProps)(App);

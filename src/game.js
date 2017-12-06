@@ -1,6 +1,6 @@
 import { isEqual, has, find } from "lodash/fp";
 
-export const ACTIVE = "0";
+export const ACTIVE = "a";
 export const ROCK = "r";
 export const PAPER = "p";
 export const SCISSORS = "x";
@@ -33,13 +33,5 @@ export function isMove(move) {
 }
 
 export function compare(a, b) {
-    if (!isMove(a)) {
-        throw new Error(`Invalid move "${a}" for player 1`);
-    }
-
-    if (!isMove(b)) {
-        throw new Error(`Invalid move "${b}" for player 2`);
-    }
-
     return Boolean(find(isEqual([a, b]), STRENGTHS));
 }

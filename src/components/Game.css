@@ -1,0 +1,113 @@
+.game {
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+    transition: padding-bottom 300ms ease-out;
+}
+.game:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url(/img/rpsls-arrows.svg);
+    background-size: cover;
+    transition: opacity 300ms ease-out;
+}
+.game-body {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.game-item {
+    position: absolute;
+    transition: opacity 300ms ease-out, top 300ms ease-out, left 300ms ease-out,
+        transform 300ms ease-out;
+}
+.game-rock {
+    top: 17%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.game-paper {
+    top: 32%;
+    left: 92%;
+    transform: translateX(-100%);
+}
+.game-scissors {
+    top: 92%;
+    left: 80%;
+    transform: translate(-100%, -100%);
+}
+.game-lizard {
+    left: 20%;
+    top: 92%;
+    transform: translateY(-100%);
+}
+.game-spock {
+    top: 32%;
+    left: 8%;
+}
+
+.game-opponent {
+    position: absolute;
+    top: 10px;
+    right: 10%;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.game-vs {
+    position: absolute;
+    top: 35px;
+    font-size: 40px;
+    left: 50%;
+    transform: translate(-50%);
+    opacity: 0;
+}
+
+.game-result {
+    position: absolute;
+    top: 140px;
+    font-size: 40px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+}
+
+.game.is-played {
+    padding-bottom: 120px;
+}
+.game.is-played:before {
+    opacity: 0;
+}
+
+.game.is-played .game-item {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.game.is-played .game-item.is-active {
+    top: 10px;
+    transform: translate(0, 0);
+    left: 10%;
+    opacity: 1;
+}
+
+.game.is-played .game-opponent {
+    opacity: 1;
+}
+.game.is-played .game-vs {
+    opacity: 1;
+}
+
+.game.is-finished {
+    padding-bottom: 200px;
+}
+
+.game.is-finished .game-result {
+    opacity: 1;
+}
