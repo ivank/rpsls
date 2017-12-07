@@ -14,7 +14,7 @@ it("renders without loading", () => {
         />
     );
 
-    assert.equal(url.find("input").prop("value"), "https://rpsls.ikerin.com#some-id");
+    assert.equal(url.find("input").prop("value"), process.env.REACT_APP_URL + "#some-id");
     assert.equal(url.find("i.fa-circle-o-notch").length, 0);
 
     url.find("button").simulate("click");
@@ -29,6 +29,6 @@ it("renders with loading", () => {
         />
     );
 
-    assert.equal(url.find("input").prop("value"), "https://rpsls.ikerin.com#some-id");
+    assert.equal(url.find("input").prop("value"), process.env.REACT_APP_URL + "#some-id");
     assert.equal(url.find("i.fa-circle-o-notch").length, 1);
 });

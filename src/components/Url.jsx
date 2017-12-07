@@ -4,7 +4,7 @@ import { pick } from "lodash/fp";
 import { connect } from "react-redux";
 
 export function Url({ id, loading }) {
-    const opponentUrl = process.env.PUBLIC_URL + "#" + id;
+    const opponentUrl = process.env.REACT_APP_URL + "#" + id;
 
     return (
         <div className="field has-addons">
