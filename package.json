@@ -18,12 +18,7 @@
         "shortid": "^2.2.8"
     },
     "jest": {
-        "collectCoverageFrom": [
-            "src/**/*.{js,jsx}",
-            "!<rootDir>/node_modules/",
-            "!src/index.js",
-            "!src/registerServiceWorker.js"
-        ]
+        "collectCoverageFrom": ["src/**/*.{js,jsx}", "!<rootDir>/node_modules/", "!src/index.js"]
     },
     "scripts": {
         "start": "react-scripts start",
