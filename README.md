@@ -2,10 +2,10 @@
 
 [![Build Status](https://travis-ci.org/ivank/rpsls.svg?branch=master)](https://travis-ci.org/ivank/rpsls)
 
-> **Playable version**
-> [https://rpsls.ikerin.com](https://rpsls.ikerin.com)
+[![Pierre_ciseaux_feuille_lézard_spock_aligned.svg](/rpsls.svg)](https://rpsls.ikerin.com)
 
-![Pierre_ciseaux_feuille_lézard_spock_aligned.svg](/rpsls.svg)
+> **Play this game at**
+> [https://rpsls.ikerin.com](https://rpsls.ikerin.com)
 
 RPSLS is an extension to the original game of rock-paper-scissors. The additional characters were added by [Sam Kass and Karen Bryla](http://www.samkass.com/theories/RPSSL.html) before being adopted, reordered, and [overpopularised by The Big Bang Theory](http://bigbangtheory.wikia.com/wiki/Rock_Paper_Scissors_Lizard_Spock).
 
@@ -15,7 +15,18 @@ Scissors cuts paper. Paper covers rock. Rock crushes lizard. Lizard poisons Spoc
 
 ## Why?
 
-This is a React & Redux project, hosted at firebase. It was made to practice those technologies in on a greenfield project and as a task given in a recruitment process.
+This is a React & Redux project, hosted at firebase. It was made to practice those technologies in a greenfield project and as a task given in a recruitment process.
+
+## Run locally
+
+You can run your own version of this game (and modify it). To do so you need to install the dependencies and add some firebase credentials.
+
+```bash
+yarn install
+yarn start
+```
+
+For the firebase inforamtion, add a `.env.local` file, [create your firebase project](https://firebase.google.com/docs/web/setup) and fill in the environment variables from `.env` in your `.env.local`.
 
 ## Attribution
 

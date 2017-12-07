@@ -3,9 +3,9 @@ import "firebase/database";
 
 const config = {
     apiKey: process.env.REACT_APP_API_KEY,
-    authDomain: "rpsls-76958.firebaseapp.com",
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
     databaseURL: process.env.REACT_APP_DATABASE_URL,
-    projectId: "rpsls-76958",
+    projectId: process.env.REACT_APP_PROJECT_ID,
     storageBucket: "",
     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
 };
