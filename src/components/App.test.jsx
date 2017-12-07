@@ -41,3 +41,19 @@ it("renders loss", () => {
     assert.equal(app.find(Url).length, 0);
     assert.equal(app.find(Game).length, 1);
 });
+
+it("renders draw", () => {
+    const app = shallow(
+        <App
+         dispatch={noop}
+         isFinished={true}
+         isWon={false}
+         isDraw={true}
+         player={ROCK}
+         opponent={ROCK}
+        />
+    );
+    assert.equal(app.find(".hero").hasClass("is-warning"), true);
+    assert.equal(app.find(Url).length, 0);
+    assert.equal(app.find(Game).length, 1);
+});
