@@ -84,6 +84,15 @@ export class App extends Component {
                                      rel="noopener noreferrer">
                                         Watch video for a fun rules explanation
                                     </a>
+
+                                    <h3>Source code</h3>
+                                    <p>
+                                        This is an open source game and you can explore how its made
+                                        at the github repo{" "}
+                                        <a href="https://github.com/ivank/rpsls">
+                                            <i className="fa fa-github" />&nbsp;ivank/rpsls
+                                        </a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
