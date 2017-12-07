@@ -1,5 +1,10 @@
 # A Game of Rock Paper Scissors Lizard Spock
 
+[![Build Status](https://travis-ci.org/ivank/rpsls.svg?branch=master)](https://travis-ci.org/ivank/rpsls)
+
+> **Playable version**
+> [https://rpsls.ikerin.com](https://rpsls.ikerin.com)
+
 ![Pierre_ciseaux_feuille_lézard_spock_aligned.svg](/rpsls.svg)
 
 RPSLS is an extension to the original game of rock-paper-scissors. The additional characters were added by [Sam Kass and Karen Bryla](http://www.samkass.com/theories/RPSSL.html) before being adopted, reordered, and [overpopularised by The Big Bang Theory](http://bigbangtheory.wikia.com/wiki/Rock_Paper_Scissors_Lizard_Spock).
