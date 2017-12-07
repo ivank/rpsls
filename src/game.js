@@ -1,4 +1,4 @@
-import { isEqual, has, find } from "lodash/fp";
+import { isEqual, has, find, keys, sample } from "lodash/fp";
 
 export const ACTIVE = "a";
 export const ROCK = "r";
@@ -30,6 +30,10 @@ const STRENGTHS = [
 
 export function isMove(move) {
     return has(move, NAMES);
+}
+
+export function randomMove() {
+    return sample(keys(NAMES));
 }
 
 /**

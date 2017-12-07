@@ -1,5 +1,13 @@
 import { ACTIVE, ROCK, PAPER, SCISSORS, LIZARD, SPOCK, NAMES } from "./game";
-import { INIT_PLAYER_1, INIT_PLAYER_2, PLAYER_1, PLAYER_2, MOVE } from "./actions";
+import {
+    INIT_PLAYER_1,
+    INIT_PLAYER_2,
+    PLAYER_1,
+    PLAYER_2,
+    MOVE,
+    SINGLE_PLAYER,
+    RESET,
+} from "./actions";
 import reducers, { setGameState } from "./reducers";
 import assert from "assert";
 
@@ -149,6 +157,49 @@ const testReducers = [
             isPlayed: true,
             isWon: false,
             isDraw: false,
+        },
+    },
+    {
+        name: "single player",
+        state: { p: "p1", p1: ACTIVE },
+        action: { type: SINGLE_PLAYER },
+        expected: {
+            p: "p1",
+            p2: ACTIVE,
+            p1: ACTIVE,
+            player: ACTIVE,
+            opponent: ACTIVE,
+            isFinished: false,
+            isPlayed: false,
+            isWon: false,
+            isDraw: false,
+            isSinglePlayer: true,
+        },
+    },
+    {
+        name: "single player reset",
+        state: {
+            p: "p1",
+            p1: ROCK,
+            p2: SCISSORS,
+            isFinished: true,
+            isWon: false,
+            isDraw: false,
+            isPlayed: true,
+            isSinglePlayer: true,
+        },
+        action: { type: RESET },
+        expected: {
+            p: "p1",
+            p2: ACTIVE,
+            p1: ACTIVE,
+            player: ACTIVE,
+            opponent: ACTIVE,
+            isFinished: false,
+            isPlayed: false,
+            isWon: false,
+            isDraw: false,
+            isSinglePlayer: true,
         },
     },
 ];

@@ -3,10 +3,10 @@ import React from "react";
 import assert from "assert";
 import { noop } from "lodash/fp";
 import { Game } from "./Game";
-import { performMove } from "../actions";
+import { performMove, reset } from "../actions";
 import { ACTIVE, ROCK, PAPER, SCISSORS, LIZARD, SPOCK, NAMES } from "../game";
 
-jest.mock("../actions", () => ({ performMove: jest.fn() }));
+jest.mock("../actions", () => ({ performMove: jest.fn(), reset: jest.fn() }));
 
 const testPlayes = [ROCK, PAPER, SCISSORS, LIZARD, SPOCK];
 
@@ -51,7 +51,7 @@ it("renders lost", () => {
     );
     assert.equal(game.hasClass("is-finished"), true);
     assert.equal(game.find(".is-active").hasClass("game-rock"), true);
-    assert.equal(game.find(".game-result").text(), "You lost!");
+    assert.equal(game.find(".game-result span").text(), "You lost!");
 });
 
 it("renders draw", () => {
@@ -66,8 +66,9 @@ it("renders draw", () => {
     );
     assert.equal(game.hasClass("is-finished"), true);
     assert.equal(game.find(".is-active").hasClass("game-rock"), true);
-    assert.equal(game.find(".game-result").text(), "It's a draw");
+    assert.equal(game.find(".game-result span").text(), "It's a draw");
 });
+
 it("renders victory", () => {
     const game = shallow(
         <Game
@@ -80,5 +81,26 @@ it("renders victory", () => {
     );
     assert.equal(game.hasClass("is-finished"), true);
     assert.equal(game.find(".is-active").hasClass("game-paper"), true);
-    assert.equal(game.find(".game-result").text(), "You won!");
+    assert.equal(game.find(".game-result span").text(), "You won!");
+});
+
+it("renders victory in single player and resets", () => {
+    const dispatchMock = jest.fn();
+    const game = shallow(
+        <Game
+         isFinished={true}
+         dispatch={dispatchMock}
+         player={PAPER}
+         opponent={ROCK}
+         isWon={true}
+         isSinglePlayer={true}
+        />
+    );
+    assert.equal(game.hasClass("is-finished"), true);
+    assert.equal(game.find(".is-active").hasClass("game-paper"), true);
+    assert.equal(game.find(".game-result span").text(), "You won!");
+    assert.equal(game.find(".game-result button").length, 1);
+
+    game.find(".game-result button").simulate("click");
+    assert.equal(reset.mock.calls.length, 1);
 });

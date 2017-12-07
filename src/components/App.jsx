@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { init } from "../actions";
+import { init, singlePlayer } from "../actions";
 import { trimCharsStart, pick } from "lodash/fp";
 import classnames from "classnames";
 import Game from "./Game";
@@ -24,7 +24,7 @@ export class App extends Component {
     }
 
     render() {
-        const { isWon, isDraw, isFinished, opponent } = this.props;
+        const { isWon, isDraw, isFinished, opponent, dispatch } = this.props;
 
         return (
             <div>
@@ -51,6 +51,13 @@ export class App extends Component {
                                                 them to show up.
                                             </p>
                                             <Url />
+                                            <p>&mdash; or &mdash;</p>
+                                            <button
+                                             className="button"
+                                             id="single-player-button"
+                                             onClick={() => dispatch(singlePlayer())}>
+                                                Play against the computer
+                                            </button>
                                         </div>
                                     )}
                                 </div>

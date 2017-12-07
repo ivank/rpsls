@@ -1,5 +1,5 @@
 import firebase from "./firebase";
-import { ACTIVE } from "./game";
+import { ACTIVE, randomMove } from "./game";
 import shortid from "shortid";
 
 export const INIT_PLAYER_1 = "INIT_PLAYER_1";
@@ -7,6 +7,9 @@ export const INIT_PLAYER_2 = "INIT_PLAYER_2";
 export const PLAYER_1 = "PLAYER_1";
 export const PLAYER_2 = "PLAYER_2";
 export const MOVE = "MOVE";
+export const SINGLE_PLAYER = "SINGLE_PLAYER";
+export const RESET = "RESET";
+export const SINGLE_PLAYER_TIMEOUT = 1500;
 
 export function init(initialId) {
     return dispatch => {
@@ -37,13 +40,28 @@ export function init(initialId) {
     };
 }
 
+export function singlePlayer() {
+    return { type: SINGLE_PLAYER };
+}
+
+export function reset() {
+    return { type: RESET };
+}
+
 export function performMove(move) {
     return (dispatch, getState) => {
         const db = firebase.database();
-        const state = getState();
+        const { isSinglePlayer, id, p } = getState();
         dispatch({ type: MOVE, move: move });
 
-        // Send your move to the opponent
-        db.ref(`games/${state.id}/${state.p}`).set(move);
+        if (isSinglePlayer) {
+            setTimeout(
+                () => dispatch({ type: PLAYER_2, move: randomMove() }),
+                SINGLE_PLAYER_TIMEOUT
+            );
+        } else {
+            // Send your move to the opponent
+            db.ref(`games/${id}/${p}`).set(move);
+        }
     };
 }

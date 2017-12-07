@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { pick } from "lodash/fp";
 import classnames from "classnames";
 import { ROCK, PAPER, SCISSORS, LIZARD, SPOCK } from "../game";
-import { performMove } from "../actions";
+import { performMove, reset } from "../actions";
 import Move from "./Move";
 
 /**
@@ -17,9 +17,19 @@ import Move from "./Move";
  * @param {boolean}  options.isFinished If player and opponent have made their moves
  * @param {boolean}  options.isWon
  * @param {boolean}  options.isDraw
+ * @param {boolean}  options.isSinglePlayer
  * @param {function} options.dispatch   redux dispatch
  */
-export function Game({ player, opponent, isPlayed, isFinished, isWon, isDraw, dispatch }) {
+export function Game({
+    player,
+    opponent,
+    isPlayed,
+    isFinished,
+    isWon,
+    isDraw,
+    isSinglePlayer,
+    dispatch,
+}) {
     return (
         <div className={classnames("game", { "is-played": isPlayed, "is-finished": isFinished })}>
             <div className="game-body">
@@ -32,7 +42,16 @@ export function Game({ player, opponent, isPlayed, isFinished, isWon, isDraw, di
                 </div>
 
                 <div className="game-result has-text-centered">
-                    {isWon ? "You won!" : isDraw ? "It's a draw" : "You lost!"}
+                    <span>{isWon ? "You won!" : isDraw ? "It's a draw" : "You lost!"}</span>
+                    {isSinglePlayer ? (
+                        <div>
+                            <button
+                             className="button"
+                             onClick={() => dispatch(reset())}>
+                                Reset
+                            </button>
+                        </div>
+                    ) : null}
                 </div>
 
                 <div
@@ -71,6 +90,14 @@ export function Game({ player, opponent, isPlayed, isFinished, isWon, isDraw, di
     );
 }
 
-const mapStateToProps = pick(["player", "opponent", "isPlayed", "isFinished", "isWon", "isDraw"]);
+const mapStateToProps = pick([
+    "isSinglePlayer",
+    "player",
+    "opponent",
+    "isPlayed",
+    "isFinished",
+    "isWon",
+    "isDraw",
+]);
 
 export default connect(mapStateToProps)(Game);
