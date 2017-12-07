@@ -156,7 +156,13 @@ const testReducers = [
 testReducers.forEach(test => {
     it(`Test reducers for ${test.name}`, () => {
         const result = reducers(test.state, test.action);
-        assert.notEqual(result, test.state);
+        assert.notStrictEqual(result, test.state);
         assert.deepEqual(result, test.expected);
     });
+});
+
+it("Test reducers without action", () => {
+    const state = { p: "p1", p1: ACTIVE, p2: PAPER };
+    const result = reducers(state, { type: "SOMETHING ERROR" });
+    assert.strictEqual(result, state);
 });

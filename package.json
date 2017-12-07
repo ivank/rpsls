@@ -1,26 +1,35 @@
 {
-  "name": "rpsls",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "classnames": "^2.2.5",
-    "copy-to-clipboard": "^3.0.8",
-    "enzyme": "^3.2.0",
-    "enzyme-adapter-react-16": "^1.1.0",
-    "firebase": "^4.7.0",
-    "lodash": "^4.17.4",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-redux": "^5.0.6",
-    "react-scripts": "1.0.17",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
-    "shortid": "^2.2.8"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+    "name": "rpsls",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "classnames": "^2.2.5",
+        "copy-to-clipboard": "^3.0.8",
+        "enzyme": "^3.2.0",
+        "enzyme-adapter-react-16": "^1.1.0",
+        "firebase": "^4.7.0",
+        "lodash": "^4.17.4",
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0",
+        "react-redux": "^5.0.6",
+        "react-scripts": "1.0.17",
+        "redux": "^3.7.2",
+        "redux-thunk": "^2.2.0",
+        "shortid": "^2.2.8"
+    },
+    "jest": {
+        "collectCoverageFrom": [
+            "src/**/*.{js,jsx}",
+            "!<rootDir>/node_modules/",
+            "!src/index.js",
+            "!src/registerServiceWorker.js"
+        ]
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject"
+    },
+    "devDependencies": {}
 }

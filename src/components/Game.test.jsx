@@ -3,18 +3,41 @@ import React from "react";
 import assert from "assert";
 import { noop } from "lodash/fp";
 import { Game } from "./Game";
-import { ACTIVE, ROCK, PAPER } from "../game";
+import { performMove } from "../actions";
+import { ACTIVE, ROCK, PAPER, SCISSORS, LIZARD, SPOCK, NAMES } from "../game";
 
-it("renders played", () => {
-    const game = shallow(
-        <Game
-         isPlayed={true}
-         player={ROCK}
-         dispatch={noop}
-        />
-    );
-    assert.equal(game.hasClass("is-played"), true);
-    assert.equal(game.find(".is-active").hasClass("game-rock"), true);
+jest.mock("../actions", () => ({ performMove: jest.fn() }));
+
+const testPlayes = [ROCK, PAPER, SCISSORS, LIZARD, SPOCK];
+
+testPlayes.forEach(test => {
+    it(`renders normal ${NAMES[test]}`, () => {
+        performMove.mockReset();
+        const dispatchMock = jest.fn();
+        const game = shallow(
+            <Game
+             isPlayed={false}
+             player={ACTIVE}
+             dispatch={dispatchMock}
+            />
+        );
+        game.find(`.game-${NAMES[test]}`).simulate("click");
+        assert.equal(performMove.mock.calls[0][0], test);
+    });
+});
+
+testPlayes.forEach(test => {
+    it(`renders played ${NAMES[test]}`, () => {
+        const game = shallow(
+            <Game
+             isPlayed={true}
+             player={test}
+             dispatch={noop}
+            />
+        );
+        assert.equal(game.hasClass("is-played"), true);
+        assert.equal(game.find(".is-active").hasClass(`game-${NAMES[test]}`), true);
+    });
 });
 
 it("renders lost", () => {

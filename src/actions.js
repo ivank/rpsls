@@ -9,7 +9,7 @@ export const PLAYER_2 = "PLAYER_2";
 export const MOVE = "MOVE";
 
 export function init(initialId) {
-    return (dispatch, getState) => {
+    return dispatch => {
         const db = firebase.database();
 
         if (initialId) {
