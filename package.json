@@ -3,11 +3,13 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "bulma": "^0.6.1",
         "classnames": "^2.2.5",
         "copy-to-clipboard": "^3.0.8",
         "enzyme": "^3.2.0",
         "enzyme-adapter-react-16": "^1.1.0",
         "firebase": "^4.7.0",
+        "font-awesome": "^4.7.0",
         "lodash": "^4.17.4",
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
