@@ -4,7 +4,7 @@ import { pick } from "lodash/fp";
 import { connect } from "react-redux";
 
 export function Url({ id, loading }) {
-    const opponentUrl = process.env.REACT_APP_WEB + "#" + id;
+    const opponentUrl = process.env.PUBLIC_URL + "#" + id;
 
     return (
         <div className="field has-addons">
@@ -32,6 +32,8 @@ export function Url({ id, loading }) {
     );
 }
 
-export default connect(pick(["id", "loading"]))(Url);
+const mapStateToProps = pick(["id", "loading"]);
+
+export default connect(mapStateToProps)(Url);
 
 

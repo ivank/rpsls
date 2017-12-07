@@ -5,6 +5,8 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "copy-to-clipboard": "^3.0.8",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
     "firebase": "^4.7.0",
     "lodash": "^4.17.4",
     "react": "^16.2.0",

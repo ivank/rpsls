@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { init } from "../actions";
 import { trimCharsStart, pick } from "lodash/fp";
-import Game from "./Game";
 import classnames from "classnames";
+import Game from "./Game";
 import Url from "./Url";
 
 export class App extends Component {
@@ -22,10 +22,10 @@ export class App extends Component {
                     "is-primary": !isFinished,
                     "is-success": isWon,
                     "is-warning": isDraw,
-                    "is-danger": isFinished && !isWon,
+                    "is-danger": isFinished && !isWon && !isDraw,
                  })}>
                     <div className="hero-body">
-                        <div className="container">
+                        <div className="container has-text-centered">
                             <div className="columns is-centered">
                                 <div className="column is-three-quarters-tablet is-half-desktop">
                                     <h1 className="title">Rock Paper Scissors Lizard Spock</h1>
@@ -59,6 +59,13 @@ export class App extends Component {
                                         decapitates lizard. Lizard eats paper. Paper disproves
                                         Spock. Spock vaporizes rock. Rock crushes scissors.
                                     </p>
+                                    <h3>Popularized by The Big Bang Theory</h3>
+                                    <a
+                                     href="https://www.youtube.com/watch?v=E9oNnKxhDcI"
+                                     target="_blank"
+                                     rel="noopener noreferrer">
+                                        Watch video for a fun rules explanation
+                                    </a>
                                 </div>
                             </div>
                         </div>

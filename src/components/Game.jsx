@@ -20,49 +20,39 @@ export function Game({ player, opponent, isPlayed, isFinished, isWon, isDraw, di
                 </div>
 
                 <div className="game-result has-text-centered">
-                    {isWon ? "You have won" : isDraw ? "Its a draw" : "You have lost"}
+                    {isWon ? "You won!" : isDraw ? "It's a draw" : "You lost!"}
                 </div>
 
                 <div
-                 className={classnames("game-item game-rock", { "is-active": player === ROCK })}>
-                    <Move
-                     move={ROCK}
-                     onClick={() => dispatch(performMove(ROCK))}
-                    />
+                 className={classnames("game-item game-rock", { "is-active": player === ROCK })}
+                 onClick={() => dispatch(performMove(ROCK))}>
+                    <Move move={ROCK} />
                 </div>
 
                 <div
-                 className={classnames("game-item game-paper", { "is-active": player === PAPER })}>
-                    <Move
-                     move={PAPER}
-                     onClick={() => dispatch(performMove(PAPER))}
-                    />
+                 className={classnames("game-item game-paper", { "is-active": player === PAPER })}
+                 onClick={() => dispatch(performMove(PAPER))}>
+                    <Move move={PAPER} />
                 </div>
 
                 <div
                  className={classnames("game-item game-scissors", {
                     "is-active": player === SCISSORS,
-                 })}>
-                    <Move
-                     move={SCISSORS}
-                     onClick={() => dispatch(performMove(SCISSORS))}
-                    />
+                 })}
+                 onClick={() => dispatch(performMove(SCISSORS))}>
+                    <Move move={SCISSORS} />
                 </div>
 
                 <div
-                 className={classnames("game-item game-lizard", { "is-active": player === LIZARD })}>
-                    <Move
-                     move={LIZARD}
-                     onClick={() => dispatch(performMove(LIZARD))}
-                    />
+                 className={classnames("game-item game-lizard", { "is-active": player === LIZARD })}
+                 onClick={() => dispatch(performMove(LIZARD))}>
+                    <Move move={LIZARD} />
                 </div>
 
                 <div
-                 className={classnames("game-item game-spock", { "is-active": player === SPOCK })}>
-                    <Move
-                     move={SPOCK}
-                     onClick={() => dispatch(performMove(SPOCK))}
-                    />
+                 className={classnames("game-item game-spock", { "is-active": player === SPOCK })}
+                 onClick={() => dispatch(performMove(SPOCK))}>
+                    <Move move={SPOCK} />
                 </div>
             </div>
         </div>

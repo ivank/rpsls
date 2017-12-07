@@ -30,8 +30,3 @@ testGames.forEach(test => {
         assert.equal(result ? "p1" : "p2", test.winner);
     });
 });
-
-it("Throw an error if moves outside of allowed ones", () => {
-    assert.throws(() => compare(null, SCISSORS), /player 1/);
-    assert.throws(() => compare(ROCK, "132"), /player 2/);
-});

@@ -10,7 +10,6 @@ const icons = {
     [LIZARD]: "fa-hand-lizard-o",
     [SPOCK]: "fa-hand-spock-o",
     [ACTIVE]: "fa-question",
-    [null]: "fa fa-spinner fa-pulse fa-fw",
 };
 
 export default function Move({ move, className, ...props }) {
