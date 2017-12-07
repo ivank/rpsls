@@ -2,6 +2,11 @@ import { ACTIVE, isMove, compare } from "./game";
 import { INIT_PLAYER_1, INIT_PLAYER_2, PLAYER_1, PLAYER_2, MOVE } from "./actions";
 import { assign, set, get } from "lodash/fp";
 
+/**
+ * Determine all the game state variables in one place, based on the current state
+ *
+ * @param {object} state
+ */
 export function setGameState(state) {
     const player = get(state.p, state);
     const opponent = get(state.p === "p1" ? "p2" : "p1", state);

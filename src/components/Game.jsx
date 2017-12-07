@@ -1,12 +1,24 @@
-import React from "react";
 import "./Game.css";
+import React from "react";
 import { connect } from "react-redux";
-import { ROCK, PAPER, SCISSORS, LIZARD, SPOCK } from "../game";
-import Move from "./Move";
-import { performMove } from "../actions";
 import { pick } from "lodash/fp";
 import classnames from "classnames";
+import { ROCK, PAPER, SCISSORS, LIZARD, SPOCK } from "../game";
+import { performMove } from "../actions";
+import Move from "./Move";
 
+/**
+ * All the states of a playable game
+ * It has a shallow structure to allow for easier css animations
+ *
+ * @param {string}   options.player     player's move
+ * @param {string}   options.opponent   oponent's move
+ * @param {boolean}  options.isPlayed   If the player has made his move
+ * @param {boolean}  options.isFinished If player and opponent have made their moves
+ * @param {boolean}  options.isWon
+ * @param {boolean}  options.isDraw
+ * @param {function} options.dispatch   redux dispatch
+ */
 export function Game({ player, opponent, isPlayed, isFinished, isWon, isDraw, dispatch }) {
     return (
         <div className={classnames("game", { "is-played": isPlayed, "is-finished": isFinished })}>

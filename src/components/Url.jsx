@@ -3,6 +3,10 @@ import copyToClipboard from "copy-to-clipboard";
 import { pick } from "lodash/fp";
 import { connect } from "react-redux";
 
+/**
+ * @param {string}  options.id      ID of the game
+ * @param {boolean} options.loading
+ */
 export function Url({ id, loading }) {
     const opponentUrl = process.env.REACT_APP_URL + "#" + id;
 

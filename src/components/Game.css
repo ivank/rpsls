@@ -78,6 +78,7 @@
     opacity: 0;
 }
 
+/* IS PLAYED STATE */
 .game.is-played {
     padding-bottom: 120px;
 }
@@ -103,6 +104,8 @@
 .game.is-played .game-vs {
     opacity: 1;
 }
+
+/* IS FINISHED STATE */
 
 .game.is-finished {
     padding-bottom: 200px;

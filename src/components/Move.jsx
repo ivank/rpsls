@@ -3,6 +3,9 @@ import "./Move.css";
 import classnames from "classnames";
 import { ACTIVE, ROCK, PAPER, SCISSORS, LIZARD, SPOCK } from "../game";
 
+/**
+ * Each move has a corresponding font awesome icon
+ */
 const icons = {
     [ROCK]: "fa-hand-rock-o",
     [PAPER]: "fa-hand-paper-o",

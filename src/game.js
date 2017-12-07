@@ -32,6 +32,14 @@ export function isMove(move) {
     return has(move, NAMES);
 }
 
+/**
+ * Campare two moves to see if you win
+ * It also returns false if its a draw or not all players have moves
+ *
+ * @param  {string} a
+ * @param  {string} b
+ * @return {boolean}
+ */
 export function compare(a, b) {
     return Boolean(find(isEqual([a, b]), STRENGTHS));
 }

@@ -6,7 +6,18 @@ import classnames from "classnames";
 import Game from "./Game";
 import Url from "./Url";
 
+/**
+ * Main component. Changes background based on game state
+ * using the isFinished, isWon and isDraw props
+ *
+ * Shows a url field, when opponent shows up, switches to game state
+ */
 export class App extends Component {
+    /**
+     * Initialize action, based on
+     * whether it was a initial page load
+     * or a challange from another player
+     */
     componentDidMount() {
         const initialId = trimCharsStart("#", window.location.hash);
         this.props.dispatch(init(initialId));
