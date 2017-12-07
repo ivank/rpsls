@@ -3,7 +3,15 @@ node_js: 8
 cache:
   directories:
   - node_modules
-script: yarn test --coverage --coverageReporters=lcov
-# after_success:
-# - npm install -g codeclimate-test-reporter
-# - codeclimate-test-reporter < coverage/lcov.info
+script: yarn test --coverage --coverageReporters=text
+before_deploy:
+- yarn build
+deploy:
+  provider: firebase
+  skip_cleanup: true
+  on:
+    repo: ivank/rpsls
+    branch: master
+  token:
+    secure: mPqsfZYgUAffk09No3XK8NJt44vSInDfCH0zR+AnlxmyNaVoX4QPnAcvlmBzPGsH5h94x7iTk8LDwR9gMvpia2LzY+eyKHCwVv7FE70EBoG5xYQ1ja/X8dlE1cchezW+Hl50uTgoViDak+jN+R8YFFTy9MnBIqhTuccqMlZhTTadXxj+hji8EmLMFzma1+5A00pDch4I32zQfGUnNoQeZk14/eore3/DC5d8RVEbkMI5CtQTNICxnPqVpG/9AMjoFOs9x5CtQYd2HLxNBKgt2ITgebhQyty9YYDt9Zoq3FACu0tXgquo4Ty4wjtW3o6R8J2laS3QgyARvKsbdr8O7JORL4kSmGEC10R1r7BrwzHTUheFN9CsthBW3KAKXCCN80r4Oq1/TMn3NqX+U9cRWuRrvEUDkI27QKixODy2Th+EsDg/apshs+wEPicgihyXj9nnKtVgDgnvXWELduC91oj/UVvpBMett1Tn406OL6zsGn95906g5XgzChh4e1wfTHW6JoGeGPuIcNe0sc4oHBR0dixldu+uOC9ChFrbhWuNqgoAxhORFhHcvOLoKfCmqVDSm3QkzT3OjUwrJR1bm4cRqrTKcuWjR3X7IAY6qBT2fG4oRLh5UM1OuWHpCbsmKrLhHQF/6G8Bk9exWfw8Z0IjYCDaOa5tyz40Vqf9fTc=
+

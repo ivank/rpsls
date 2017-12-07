@@ -1,4 +1,4 @@
-# Rock Paper Scissors Lizard Spock Game
+# A Game of Rock Paper Scissors Lizard Spock
 
 ![Pierre_ciseaux_feuille_lézard_spock_aligned.svg](/rpsls.svg)
 
