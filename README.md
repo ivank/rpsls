@@ -15,9 +15,9 @@ Scissors cuts paper. Paper covers rock. Rock crushes lizard. Lizard poisons Spoc
 
 ## Why?
 
-This is a React & Redux project, hosted at firebase. It was made to practice those technologies in a greenfield project and as a task given in a recruitment process.
+This is a React & Redux app, built with create-react-app and hosted at firebase. It was made to practice those technologies in a greenfield project and as a task given in a recruitment process.
 
-## Run locally
+## Run locally and experiment
 
 You can run your own version of this game (and modify it). To do so you need to install the dependencies and add some firebase credentials.
 
