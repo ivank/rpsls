@@ -79,7 +79,7 @@ export class App extends Component {
                                     </p>
                                     <h3>Popularized by The Big Bang Theory</h3>
                                     <a
-                                     href="https://www.youtube.com/watch?v=E9oNnKxhDcI"
+                                     href="https://www.youtube.com/watch?v=IFurn06BDuc"
                                      target="_blank"
                                      rel="noopener noreferrer">
                                         Watch video for a fun rules explanation
